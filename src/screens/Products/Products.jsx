@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, Image } from 'react-native';
-import { Header, SearchInput, Card } from '../../components'; // Asegúrate de importar el componente Card y otros componentes necesarios
+import { View, Text, FlatList, Image, TouchableOpacity } from 'react-native';
+import { Header, SearchInput, Card } from '../../components'; 
 import allProducts from '../../data/products';
-import styles from './Products.style'; // Asegúrate de importar tus estilos
+import styles from './Products.style'; 
 
-const Products = ({ category }) => {
+const Products = ({ route, navigation  }) => {
   const [arrProducts, setArrProducts] = useState([]);
   const [keyword, setKeyword] = useState('');
+  const {category }= route.params
 
   useEffect(() => {
     if (category) {
@@ -31,7 +32,7 @@ const Products = ({ category }) => {
         <FlatList
           data={arrProducts}
           renderItem={({ item }) => (
-            <Card style={styles.productCard}>
+            <TouchableOpacity style={styles.productCard} onPress={() =>navigation.navigate('Details',{products: item}) }>
               <Image source={{ uri: item.thumbnail }} style={styles.productImage} />
               <Text style={styles.productTitle}>{item.title}</Text>
               <Text style={styles.productDescription}>{item.description}</Text>
@@ -40,10 +41,10 @@ const Products = ({ category }) => {
               <Text style={styles.productRating}>Rating: {item.rating}</Text>
               <Text style={styles.productStock}>Stock: {item.stock} available</Text>
               <Text style={styles.productBrand}>Brand: {item.brand}</Text>
-              {/* Puedes agregar más información si es necesario */}
-            </Card>
+             
+            </TouchableOpacity>
           )}
-          keyExtractor={(item) => item.id.toString()} // Convertir el ID a cadena
+          keyExtractor={(item) => item.id.toString()}
         />
       </View>
     </View>
