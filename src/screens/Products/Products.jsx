@@ -36,12 +36,7 @@ const Products = ({ route, navigation  }) => {
               <Image source={{ uri: item.thumbnail }} style={styles.productImage} />
               <Text style={styles.productTitle}>{item.title}</Text>
               <Text style={styles.productDescription}>{item.description}</Text>
-              <Text style={styles.productPrice}>Price: ${item.price}</Text>
-              <Text style={styles.productDiscount}>Discount: {item.discountPercentage}% off</Text>
-              <Text style={styles.productRating}>Rating: {item.rating}</Text>
-              <Text style={styles.productStock}>Stock: {item.stock} available</Text>
-              <Text style={styles.productBrand}>Brand: {item.brand}</Text>
-             
+              <Text style={styles.productPrice}>Price: ${item.price}</Text>             
             </TouchableOpacity>
           )}
           keyExtractor={(item) => item.id.toString()}
