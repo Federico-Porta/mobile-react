@@ -13,8 +13,12 @@ const initialState={
 export const productSlice = createSlice({
     name:'shop',
     initialState,
-    reducers:{setcategoryselected:() =>{},
-    setproductsid: ()=>{}
+    reducers:{setcategoryselected:(state, action) =>{
+        state.categoryselected = action.payload
+    },
+    setproductsid: (state, action)=>{
+        state.productselected= action.payload
+    }
     }
 })
 

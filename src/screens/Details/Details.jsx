@@ -42,7 +42,6 @@ const Details = ({ route }) => {
       <Text style={styles.desc}>{products.description}</Text>
       <Text style={styles.precio}>{'$' + products.price}</Text>
 
-      <Text style={{fontSize:60}}>{counter}</Text>
 
     </View>
   );

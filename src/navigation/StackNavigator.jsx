@@ -7,7 +7,7 @@ const Stack = createNativeStackNavigator()
 
 function StackNavigator(){
     return(
-        <Stack.Navigator initialRouteName='Home' screenOptions={({route, navigation}) => ({headerShown:true, 
+        <Stack.Navigator initialRouteName='Home' screenOptions={({route, navigation}) => ({headerShown:false, 
         header:()=>( <View style={{marginTop:60}}><Button onPress={()=> navigation.goBack()} title="volver"/></View>)
     
     

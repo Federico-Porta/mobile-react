@@ -3,11 +3,13 @@ import { View, Text, FlatList, Image, TouchableOpacity } from 'react-native';
 import { Header, SearchInput, Card } from '../../components'; 
 import allProducts from '../../data/products';
 import styles from './Products.style'; 
+import { useSelector } from 'react-redux';
 
-const Products = ({ route, navigation  }) => {
+const Products = ({  navigation  }) => {
+  const category = useSelector(state=> state.shop.categoryselected)
   const [arrProducts, setArrProducts] = useState([]);
   const [keyword, setKeyword] = useState('');
-  const {category }= route.params
+ 
 
   useEffect(() => {
     if (category) {
