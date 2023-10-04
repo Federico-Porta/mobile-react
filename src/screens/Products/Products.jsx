@@ -4,26 +4,23 @@ import { Header, SearchInput, Card } from '../../components';
 import allProducts from '../../data/products';
 import styles from './Products.style'; 
 import { useSelector } from 'react-redux';
+import { useGetProductsByCategoryQuery } from '../../services/shopAPI';
 
 const Products = ({  navigation  }) => {
   const category = useSelector(state=> state.shop.categoryselected)
   const [arrProducts, setArrProducts] = useState([]);
   const [keyword, setKeyword] = useState('');
+  const {data, isLoading} = useGetProductsByCategoryQuery(category)
  
 
   useEffect(() => {
-    if (category) {
-      const products = allProducts.filter((product) => product.category === category);
-      const productsFiltered = products.filter((product) =>
+    if (data) {
+      
+      const productsFiltered = data.filter((product) =>
         product.title.includes(keyword)
       );
       setArrProducts(productsFiltered);
-    } else {
-      const productsFiltered = allProducts.filter((product) =>
-        product.title.includes(keyword)
-      );
-      setArrProducts(productsFiltered);
-    }
+    } 
   }, [category, keyword]);
 
   return (
@@ -32,7 +29,7 @@ const Products = ({  navigation  }) => {
       <SearchInput onSearch={setKeyword} />
       <View style={styles.listContainer}>
         <FlatList
-          data={arrProducts}
+          data={Object.values(data)}
           renderItem={({ item }) => (
             <TouchableOpacity style={styles.productCard} onPress={() =>navigation.navigate('Details',{products: item}) }>
               <Image source={{ uri: item.thumbnail }} style={styles.productImage} />

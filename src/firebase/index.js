@@ -1,1 +1,1 @@
-export const baseURL= 'https://console.firebase.google.com/project/reactnativefp/database/reactnativefp-default-rtdb/data/~2F?hl=es' 
+export const baseURL= 'https://reactnativefp-default-rtdb.firebaseio.com/' 

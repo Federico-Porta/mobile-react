@@ -4,7 +4,7 @@ import fonts from './src/global/fonts'
 import {NavigationContainer} from "@react-navigation/native"
 import BottomTabNavigator from './src/navigation/BottomTabNavigator'
 import { Provider } from 'react-redux'
-import { store } from './src/Store/Index'
+import  store  from './src/Store/Index'
 
 
 

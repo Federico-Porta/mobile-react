@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import {baseURL} from '../firebase/index'
 
-import { baseURL } from '../firebase'
 
 export const shopApi = createApi({
   reducerPath: 'shopApi',
@@ -16,19 +16,11 @@ export const shopApi = createApi({
       query: category =>
         `Products.json?orderBy="category"&equalTo="${category}"`,
     }),
-    postOrder: builder.mutation({
-      query: ({ ...order }) => ({
-        url: 'orders.json',
-        method: 'POST',
-        body: order,
-      }),
     }),
-  }),
-})
+  })
 
 export const {
   useGetCategoriesQuery,
   useGetProductsQuery,
   useGetProductsByCategoryQuery,
-  usePostOrderMutation,
 } = shopApi
