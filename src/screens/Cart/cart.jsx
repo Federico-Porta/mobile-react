@@ -1,26 +1,32 @@
-import { View, Text, FlatList, Pressable } from 'react-native'
-import React from 'react'
-import cartdata from '../../data/cartdata'
-import CartItem from './components/CartItem'
+import { FlatList, Pressable, Text, View } from 'react-native'
 
-const cart = () => {
-const renderItem = () => (<CartItem/>)
+import CartItem from './components/CartItem'
+import React from 'react'
+import dataCart from '../../data/dataCart'
+import styles from './Cart.styles'
+
+const Cart = () => {
+  const renderItem = () => <CartItem />
 
   return (
-    <View>
-     <View>
-      <FlatList 
-      data={cartdata} 
-      keyExtractor={item => item.id} 
-      renderItem={renderItem} />
-     </View>
-     <View>
-      <Pressable>
-        <Text style={{color:'black', fontSize:20}}>Checkout</Text>
-      </Pressable>
-     </View>
+    <View style={styles.container}>
+      <View style={styles.listContainer}>
+        <FlatList
+          data={dataCart}
+          keyExtractor={item => item.id}
+          renderItem={renderItem}
+        />
+      </View>
+      <View style={styles.buttonContainer}>
+        <Pressable>
+          <Text>Confirm</Text>
+          <View>
+            <Text>{`Total $100`}</Text>
+          </View>
+        </Pressable>
+      </View>
     </View>
   )
 }
 
-export default cart
+export default Cart

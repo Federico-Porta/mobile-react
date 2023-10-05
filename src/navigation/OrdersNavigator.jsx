@@ -1,16 +1,19 @@
-import {NavigationContainer} from "@react-navigation/native"
-import { createNativeStackNavigator }from "@react-navigation/native-stack"
-import { Order } from "../screens"
+import { Orders } from '../screens'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 const Stack = createNativeStackNavigator()
 
-function OrderNavigator(){
-    return(
-        <Stack.Navigator initialRouteName='Order' screenOptions={() =>({headerShown:false})}>
-    
-            <Stack.Screen name='Order' component ={Order}/>
-        </Stack.Navigator>
-    )
-    
+function OrdersNavigator() {
+  return (
+    <Stack.Navigator
+      initialRouteName="Orders"
+      screenOptions={() => ({
+        headerShown: false,
+      })}
+    >
+      <Stack.Screen name="Orders" component={Orders} />
+    </Stack.Navigator>
+  )
 }
-export default OrderNavigator
+
+export default OrdersNavigator

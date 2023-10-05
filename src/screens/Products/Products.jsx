@@ -1,48 +1,58 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, Image, TouchableOpacity } from 'react-native';
-import { Header, SearchInput, Card } from '../../components'; 
-import allProducts from '../../data/products';
-import styles from './Products.style'; 
-import { useSelector } from 'react-redux';
-import { useGetProductsByCategoryQuery } from '../../services/shopAPI';
+import {
+  FlatList,
+  Image,
+  SafeAreaView,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native'
+import React, { useEffect, useState } from 'react'
 
-const Products = ({  navigation  }) => {
-  const category = useSelector(state=> state.shop.categoryselected)
-  const [arrProducts, setArrProducts] = useState([]);
-  const [keyword, setKeyword] = useState('');
-  const {data, isLoading} = useGetProductsByCategoryQuery(category)
- 
+import { SearchInput } from '../../components'
+import allProducts from '../../data/products'
+import styles from './Products.style'
+import { useGetProductsByCategoryQuery } from '../../services/shopApi'
+import { useSelector } from 'react-redux'
 
-  useEffect(() => {
-    if (data) {
-      
-      const productsFiltered = data.filter((product) =>
-        product.title.includes(keyword)
-      );
-      setArrProducts(productsFiltered);
-    } 
-  }, [category, keyword]);
+const Products = ({ navigation }) => {
+  const category = useSelector(state => state.shop.categorySelected)
+  const [keyword, setKeyword] = useState('')
+  const { data, isLoading } = useGetProductsByCategoryQuery(category)
+
+ console.log(data)
 
   return (
-    <View style={styles.container}>
-      <Header title={category} />
+    <SafeAreaView style={styles.container}>
       <SearchInput onSearch={setKeyword} />
       <View style={styles.listContainer}>
-        <FlatList
-          data={Object.values(data)}
-          renderItem={({ item }) => (
-            <TouchableOpacity style={styles.productCard} onPress={() =>navigation.navigate('Details',{products: item}) }>
-              <Image source={{ uri: item.thumbnail }} style={styles.productImage} />
-              <Text style={styles.productTitle}>{item.title}</Text>
-              <Text style={styles.productDescription}>{item.description}</Text>
-              <Text style={styles.productPrice}>Price: ${item.price}</Text>             
-            </TouchableOpacity>
-          )}
-          keyExtractor={(item) => item.id.toString()}
-        />
+        {!isLoading && (
+          <FlatList
+            data={Object.values(data)}
+            numColumns={2}
+            columnWrapperStyle={styles.weapperStyle}
+            renderItem={({ item }) => (
+              <TouchableOpacity
+                style={styles.productContainer}
+                onPress={() =>
+                  navigation.navigate('Details', { product: item })
+                }
+              >
+                <Image
+                  style={styles.image}
+                  source={{
+                    uri: item.images[0],
+                  }}
+                />
+                <Text style={styles.title}>{item.title}</Text>
+                <Text style={styles.price}>{`$${item.price.toFixed(2)}`}</Text>
+              </TouchableOpacity>
+            )}
+            keyExtractor={item => item.id}
+          />
+        )}
       </View>
-    </View>
-  );
-};
+    </SafeAreaView>
+  )
+}
 
-export default Products;
+export default Products

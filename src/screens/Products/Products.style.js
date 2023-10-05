@@ -4,38 +4,37 @@ import { colors } from '../../constants/colors'
 export default styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f5f5f5', 
-    padding: 10, 
-   
+    backgroundColor: colors.white,
   },
   listContainer: {
-    flex: 1, top: 15,
-    marginVertical: 10, 
+    flex: 1,
+    marginTop: 15,
+    paddingHorizontal: 15,
   },
-  productCard: {
-    backgroundColor: '#fff', 
-    borderRadius: 10, 
-    marginVertical: 10, 
-    padding: 15, 
-    shadowColor: 'rgba(0, 0, 0, 0.2)', 
-    shadowOffset: { width: 0, height: 2 }, 
-    shadowOpacity: 0.5, 
-    shadowRadius: 3, 
-    elevation: 2, 
+  weapperStyle: {
+    justifyContent: 'space-between',
   },
-  productImage: {
-    width: '100%', 
-    height: 150, 
-    resizeMode: 'cover', 
-    marginBottom: 10, 
+  productContainer: {
+    width: '47%',
+    backgroundColor: colors.grey,
+    marginBottom: 20,
+    alignItems: 'flex-start',
+    paddingVertical: 15,
+    paddingHorizontal: 10,
+    borderRadius: 15,
+    gap: 10,
   },
-  productTitle: {
-    fontSize: 18, 
-    fontWeight: 'bold',
+  image: {
+    alignSelf: 'center',
+    height: 150,
+    width: 150,
   },
-  productDescription: {
-    fontSize: 14, 
-    marginBottom: 10,
+  title: {
+    fontWeight: '700',
+    fontVariant: 'small-caps',
+  },
+  price: {
+    fontSize: 20,
+    fontVariant: '',
   },
 })
-

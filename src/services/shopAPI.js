@@ -1,10 +1,10 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import {baseURL} from '../firebase/index'
 
+import { baseUrl } from '../firebase'
 
 export const shopApi = createApi({
   reducerPath: 'shopApi',
-  baseQuery: fetchBaseQuery({ baseURL }),
+  baseQuery: fetchBaseQuery({ baseUrl }),
   endpoints: builder => ({
     getCategories: builder.query({
       query: () => 'Categories.json',
@@ -16,8 +16,8 @@ export const shopApi = createApi({
       query: category =>
         `Products.json?orderBy="category"&equalTo="${category}"`,
     }),
-    }),
-  })
+  }),
+})
 
 export const {
   useGetCategoriesQuery,

@@ -7,6 +7,9 @@ export default styles = StyleSheet.create({
     backgroundColor: colors.white,
   },
   listContainer: {
-    paddingHorizontal: 15,
+    flex: 4,
+  },
+  buttonContainer: {
+    flex: 1,
   },
 })

@@ -1,28 +1,22 @@
-import StackNavigator from './src/navigation/StackNavigator'
-import {useFonts} from 'expo-font'
-import fonts from './src/global/fonts'
-import {NavigationContainer} from "@react-navigation/native"
-import BottomTabNavigator from './src/navigation/BottomTabNavigator'
+import BottomTabNavigator from './src/navigation/BottomTabNavigator' 
+import { NavigationContainer } from '@react-navigation/native'
 import { Provider } from 'react-redux'
-import  store  from './src/Store/Index'
-
-
+import fonts from './src/global/fonts'
+import store from './src/Store/Index'
+import { useFonts } from 'expo-font'
 
 export default function App() {
-  const[fontsLoaded] = useFonts(fonts)
+  const [fontsLoaded] = useFonts(fonts)
 
-  if (!fontsLoaded){
+  if (!fontsLoaded) {
     return null
   }
 
-  return ( <Provider store={store} ><NavigationContainer><BottomTabNavigator/></NavigationContainer></Provider>
+  return (
+    <Provider store={store}>
+      <NavigationContainer>
+        <BottomTabNavigator />
+      </NavigationContainer>
+    </Provider>
   )
-/*return productSelected?  (
-
- <Details  products={productSelected}/>) : categorySelected? (
-
-    <Products category={categorySelected} setProductSelected={ setProductSelected} />
-  ) : (
-  <Home setCategorySelected={setCategorySelected} />
-  )*/
 }

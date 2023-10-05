@@ -1,28 +1,19 @@
 import { StyleSheet } from 'react-native'
-import fonts from '../../../../global/fonts'
-
+import { colors } from '../../../../constants/colors'
 
 export default styles = StyleSheet.create({
-  pressable: {
-    marginBottom: 10, 
+  container: {
+    backgroundColor: colors.grey,
+    marginVertical: 15,
+    height: 100,
+    borderRadius: 20,
+    justifyContent: 'center',
   },
-  cardContainer: {
-    backgroundColor: '#EFEFEF', 
-    padding: 10,
-    margin: 5,
-    borderRadius: 10, 
-    alignItems: 'center', 
-    justifyContent: 'center', 
-    shadowColor: 'rgba(0, 0, 0, 0.2)', 
-    shadowOffset: { width: 0, height: 2 }, 
-    shadowOpacity: 0.5, 
-    shadowRadius: 3,
-    elevation: 2, 
+  contentContainer: {
+    paddingLeft: 20,
   },
   text: {
-    fontSize: 21,
-    fontFamily: 'bebas',
-    color: '#333', 
-    fontWeight: 'bold', 
+    fontFamily: 'PoppinsLightItalic',
+    fontSize: 18,
   },
 })

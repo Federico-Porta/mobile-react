@@ -1,1 +1,1 @@
-export const baseURL= 'https://reactnativefp-default-rtdb.firebaseio.com/' 
+export const baseUrl = 'https://reactnativefp-default-rtdb.firebaseio.com/'

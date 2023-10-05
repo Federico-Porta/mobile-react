@@ -1,7 +1,7 @@
-import Home from './Home/Home'
-import Products from './Products/Products'
+import Cart from './Cart/cart'
 import Details from './Details/Details'
-import cart from './Cart/cart'
-import Order from './Orders/Order'
+import Home from './Home/Home'
+import Orders from './Orders/Orders'
+import Products from './Products/Products'
 
-export { Home, Products, Details, cart, Order }
+export { Home, Products, Details, Cart, Orders }
