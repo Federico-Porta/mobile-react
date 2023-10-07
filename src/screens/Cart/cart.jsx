@@ -1,5 +1,5 @@
 import { FlatList, Pressable, Text, View } from 'react-native'
-import CartItem from './components/CartItem'
+import CartItem from './components/Cartitem'
 import React from 'react'
 import dataCart from '../../data/dataCart'
 import styles from './Cart.styles'

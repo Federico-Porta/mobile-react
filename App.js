@@ -1,11 +1,9 @@
-
+import MainNavigator from './src/navigation/MainNavigator'
 import { NavigationContainer } from '@react-navigation/native'
 import { Provider } from 'react-redux'
 import fonts from './src/global/fonts'
-import store from './src/Store/Index'
+import store from './src/Store/index'
 import { useFonts } from 'expo-font'
-import Login from './src/screens/Home/Login/Login'
-import MainNavigator from './src/navigation/MainNavigator'
 
 export default function App() {
   const [fontsLoaded] = useFonts(fonts)
@@ -15,9 +13,9 @@ export default function App() {
   }
 
   return (
-   <Provider store={store}>
+    <Provider store={store}>
       <NavigationContainer>
-        <MainNavigator/>
+        <MainNavigator />
       </NavigationContainer>
     </Provider>
   )

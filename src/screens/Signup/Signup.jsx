@@ -1,24 +1,26 @@
-import React, { useState } from 'react';
-import { View, Text, Pressable, TextInput } from 'react-native';
-import styles from './Singup.style';
+import { Pressable, Text, TextInput, View } from 'react-native'
+import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { useSignUpMutation } from '../../../services/authApi'
-import { setUser } from '../../../features/auth/authSlice';
+import styles from './Signup.styles'
+import { setUser } from '../../features/auth/authSlice'; 
+import { useSignUpMutation } from '../../services/authApi';
 
 const Signup = ({ navigation }) => {
-  const [email, setEmail] = useState('')
+   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPass, setConfirmPass] = useState('')
   const [triggerSignup, result] = useSignUpMutation()
   const dispatch = useDispatch()
-
   const onSubmit = () => {
     console.log(email, password, confirmPass)
     triggerSignup({
       email,
       password,
     })
-   
+    console.log(result)
+    if (result.isSuccess) {
+      dispatch(setUser(result))
+    }
   }
 
   return (
@@ -41,7 +43,7 @@ const Signup = ({ navigation }) => {
         <Text style={styles.buttonText}>Log In</Text>
       </Pressable>
     </View>
-  );
+  )
 }
 
-export default Signup;
+export default Signup
