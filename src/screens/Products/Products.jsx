@@ -19,7 +19,6 @@ const Products = ({ navigation }) => {
   const [keyword, setKeyword] = useState('')
   const { data, isLoading } = useGetProductsByCategoryQuery(category)
 
- console.log(data)
 
   return (
     <SafeAreaView style={styles.container}>
