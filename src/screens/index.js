@@ -5,4 +5,5 @@ import Orders from './Orders/Orders'
 import Products from './Products/Products'
 import Login from './Login/Login'
 import Signup from './Signup/Signup'
-export { Home, Products, Details, Cart, Orders, Login, Signup  }
+import Profile from './Profile/Profile'
+export { Home, Products, Details, Cart, Orders, Login, Signup, Profile }
