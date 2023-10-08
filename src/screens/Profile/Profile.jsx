@@ -2,9 +2,15 @@ import * as ImagePicker from 'expo-image-picker'
 import { Image, Pressable, Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import styles from './Profile.styles'
+import { useDispatch, useSelector } from 'react-redux'
+import { setCameraImage } from '../../features/auth/authSlice'
+import { usePostProfileImageMutation } from '../../services/shopApi'
 
 const Profile = () => {
-  const [image, setImage] = useState(null)
+  const image = useSelector(state => state.auth.imageCamera)
+  const dispatch = useDispatch()
+  const {localId} = useSelector(state => state.auth)
+  const [triggerSaveProfileImage, result] = usePostProfileImageMutation()
 
   const verifyCameraPermissions = async () =>{
     const {granted} = await ImagePicker.requestCameraPermissionsAsync()
@@ -26,18 +32,25 @@ const Profile = () => {
         quality: 0.4
       })
       if(!result.canceled){
-        setImage(`data:image/jpeg;base64,${result.assets[0].base64}`)
+        dispatch(setCameraImage(`data:image/jpeg;base64,${result.assets[0].base64}`))
       }
     }
   }
 
   const confirmImage = async () =>{
-
+   triggerSaveProfileImage({image, localId})
+   console.log(result)
   }
 
   return (
     <View style={styles.container}>
-      {image ? null : (
+      {image ?  <Image
+          source={{
+            uri: image,
+          }}
+          style={styles.image}
+          resizeMode="cover"
+        /> : (
         <Image
           source={{
             uri: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
