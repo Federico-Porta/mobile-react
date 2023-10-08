@@ -28,7 +28,7 @@ const Login = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View>
-        <Text style={styles.title}>Bienvenido nuevamente</Text>
+        <Text style={styles.title}>Bienvenido</Text>
       </View>
       <TextInput
         style={styles.input}
@@ -45,6 +45,11 @@ const Login = ({ navigation }) => {
       />
       <Pressable style={styles.button} onPress={onSubmit}>
         <Text style={styles.buttonText}>Log In</Text>
+      </Pressable>
+      <Text style={styles.signUpText}>No estas registrado?</Text>
+      <Pressable
+            onPress={() => navigation.navigate('Signup')}>
+        <Text style={styles.buttonText}>Registrarse</Text>
       </Pressable>
     </View>
   );
