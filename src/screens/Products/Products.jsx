@@ -19,7 +19,6 @@ const Products = ({ navigation }) => {
   const [keyword, setKeyword] = useState('')
   const { data, isLoading } = useGetProductsByCategoryQuery(category)
 
-
   return (
     <SafeAreaView style={styles.container}>
       <SearchInput onSearch={setKeyword} />
@@ -27,7 +26,7 @@ const Products = ({ navigation }) => {
         {!isLoading && (
           <FlatList
             data={Object.values(data)}
-            numColumns={2}
+            numColumns={1}
             columnWrapperStyle={styles.weapperStyle}
             renderItem={({ item }) => (
               <TouchableOpacity
@@ -36,22 +35,27 @@ const Products = ({ navigation }) => {
                   navigation.navigate('Details', { product: item })
                 }
               >
+              <Text style={styles.title}>{item.title}</Text>
+              <Text style={styles.rating}>{`Rating: ${item.rating}`}</Text>
                 <Image
                   style={styles.image}
                   source={{
                     uri: item.images[0],
                   }}
                 />
-                <Text style={styles.title}>{item.title}</Text>
+                
                 <Text style={styles.price}>{`$${item.price.toFixed(2)}`}</Text>
+                <Text style={styles.description}>{item.description}</Text>
+                <Text style={styles.brand}>{`${item.brand}`}</Text>
               </TouchableOpacity>
             )}
-            keyExtractor={item => item.id}
+            keyExtractor={item => item.id.toString()} 
           />
         )}
       </View>
     </SafeAreaView>
-  )
+  );
+
 }
 
 export default Products

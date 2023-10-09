@@ -1,4 +1,4 @@
-import { Profile } from '../screens'
+import { Profile, LocationScreen } from '../screens'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 const ProfileStack = createNativeStackNavigator()
@@ -12,6 +12,7 @@ function ProfileNavigator() {
       })}
     >
       <ProfileStack.Screen name="Profile" component={Profile} />
+      <ProfileStack.Screen name="Location" component={LocationScreen} />
     </ProfileStack.Navigator>
   )
 }

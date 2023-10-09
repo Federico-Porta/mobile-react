@@ -1,40 +1,64 @@
-import { StyleSheet } from 'react-native'
-import { colors } from '../../constants/colors'
+import { StyleSheet } from 'react-native';
 
-export default styles = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.white,
+    width: '100%',
+    backgroundColor: '#f4f4f4', 
+    paddingHorizontal: 16,
   },
   listContainer: {
     flex: 1,
-    marginTop: 15,
-    paddingHorizontal: 15,
-  },
-  weapperStyle: {
-    justifyContent: 'space-between',
+
+    marginTop: 16,
   },
   productContainer: {
-    width: '47%',
-    backgroundColor: colors.grey,
-    marginBottom: 20,
-    alignItems: 'flex-start',
-    paddingVertical: 15,
-    paddingHorizontal: 10,
-    borderRadius: 15,
-    gap: 10,
-  },
-  image: {
-    alignSelf: 'center',
-    height: 150,
-    width: 150,
+    flex: 1,
+    backgroundColor: '#fff', // Fondo de la "card"
+    marginBottom: 16,
+    borderRadius: 8,
+    padding: 16,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 2,
+    elevation: 2,
   },
   title: {
-    fontWeight: '700',
-    fontVariant: 'small-caps',
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 8,
+    color: '#333', // Color del título
+  },
+  rating: {
+    fontSize: 16,
+    color: '#4CAF50', // Color del rating
+    marginBottom: 8,
+  },
+  image: {
+    width: '100%',
+    height: 150,
+    borderRadius: 8,
+    marginBottom: 8,
   },
   price: {
-    fontSize: 20,
-    fontVariant: '',
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#2196F3', // Color del precio
+    marginBottom: 8,
   },
-})
+  description: {
+    fontSize: 14,
+    color: '#555', // Color de la descripción
+    marginBottom: 8,
+  },
+  brand: {
+    fontSize: 14,
+    color: '#888', // Color de la marca
+  },
+});
+
+export default styles;

@@ -6,4 +6,5 @@ import Products from './Products/Products'
 import Login from './Login/Login'
 import Signup from './Signup/Signup'
 import Profile from './Profile/Profile'
-export { Home, Products, Details, Cart, Orders, Login, Signup, Profile }
+import LocationScreen from './Location/Location'
+export { Home, Products, Details, Cart, Orders, Login, Signup, Profile, LocationScreen }
