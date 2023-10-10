@@ -1,19 +1,27 @@
-import { StyleSheet } from 'react-native'
-import { colors } from '../../../../constants/colors'
+// components/CategoryItem.style.js
 
-export default styles = StyleSheet.create({
-  container: {
-    backgroundColor: colors.grey,
-    marginVertical: 15,
-    height: 100,
-    borderRadius: 20,
+import { StyleSheet } from 'react-native';
+
+const styles = StyleSheet.create({
+  card: {
+    flex: 2,
+    width: '45%',
+    aspectRatio: 1,
+    borderRadius: 10,
+    overflow: 'hidden',
+    marginVertical: 8,
+  },
+  cardContent: {
+    flex: 2,
     justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#3498db', // Puedes cambiar este color según tus preferencias
   },
-  contentContainer: {
-    paddingLeft: 20,
+  cardText: {
+    color: '#ffffff',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
-  text: {
-    fontFamily: 'PoppinsLightItalic',
-    fontSize: 18,
-  },
-})
+});
+
+export default styles;

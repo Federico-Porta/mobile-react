@@ -1,25 +1,27 @@
-import { Pressable, Text, View } from 'react-native'
+// components/CategoryItem.js
 
-import React from 'react'
-import { setCategorySelected } from '../../../../features/shop/shopSlice'
-import styles from './CategoryItem.style'
-import { useDispatch } from 'react-redux'
+import React from 'react';
+import { Pressable, Text, View } from 'react-native';
+import { setCategorySelected } from '../../../../features/shop/shopSlice';
+import styles from './CategoryItem.style';
+import { useDispatch } from 'react-redux';
 
 const CategoryItem = ({ category, navigation }) => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+
   return (
     <Pressable
       onPress={() => {
-        dispatch(setCategorySelected(category))
-        navigation.navigate('Products', { category })
+        dispatch(setCategorySelected(category));
+        navigation.navigate('Products', { category });
       }}
-      style={styles.container}
+      style={styles.card}
     >
-      <View style={styles.contentContainer}>
-        <Text style={styles.text}>{category}</Text>
+      <View style={styles.cardContent}>
+        <Text style={styles.cardText}>{category}</Text>
       </View>
     </Pressable>
-  )
-}
+  );
+};
 
-export default CategoryItem
+export default CategoryItem;
