@@ -1,25 +1,38 @@
-import { StyleSheet } from 'react-native'
-import { colors } from '../../../constants/colors'
+import { StyleSheet } from 'react-native';
 
-export default styles = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
-    margin: 15,
-    padding: 8,
-    borderRadius: 20,
-    backgroundColor: colors.grey,
+    top: 50,
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#FFFFFF',
+    borderRadius: 10,
+    padding: 16,
+    marginBottom: 12,
+    elevation: 3,
   },
-  name: {
-    fontSize: 18,
+  imageContainer: {
+    marginRight: 16,
   },
   image: {
-    width: 50,
-    height: 50,
+    width: 80,
+    height: 80,
+    borderRadius: 8,
+  },
+  itemDetails: {
+    flex: 1,
+  },
+  name: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#333333',
   },
   details: {
-    flex: 1,
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    marginTop: 8,
   },
-})
+  deleteButton: {
+    marginLeft: 16,
+  },
+});
+
+export default styles;

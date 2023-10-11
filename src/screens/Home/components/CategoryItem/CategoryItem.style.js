@@ -4,23 +4,21 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   card: {
-    flex: 2,
-    width: '45%',
-    aspectRatio: 1,
-    borderRadius: 10,
-    overflow: 'hidden',
-    marginVertical: 8,
+    backgroundColor: '#fff', 
+    borderRadius: 8, 
+    padding: 16,
+    margin: 8, 
+    shadowColor: '#000', 
+    shadowOpacity: 0.2, 
   },
   cardContent: {
-    flex: 2,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#3498db', // Puedes cambiar este color según tus preferencias
+    // Puedes agregar estilos específicos para el contenido de la tarjeta si es necesario
   },
   cardText: {
-    color: '#ffffff',
+    textAlign: 'center',
     fontSize: 16,
     fontWeight: 'bold',
+    color: '#333', // color del texto
   },
 });
 

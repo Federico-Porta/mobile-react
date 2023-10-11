@@ -1,15 +1,14 @@
-import { Image, Pressable, Text, View } from 'react-native'
+import React from 'react';
+import { Image, Pressable, Text, View } from 'react-native';
+import Feather from '@expo/vector-icons/Feather';
+import styles from './CartItem.styles';
 
-import Feather from '@expo/vector-icons/Feather'
-import React from 'react'
-import styles from './CartItem.styles'
+const CartItem = ({ item }) => {
+  const subtotal = item.quantity * item.price;
 
-const Cartitem = ({item}) => {
-
-  const subtotal= item.quantity*item.price 
   return (
     <View style={styles.container}>
-      <View>
+      <View style={styles.imageContainer}>
         <Image
           style={styles.image}
           source={{
@@ -17,21 +16,19 @@ const Cartitem = ({item}) => {
           }}
         />
       </View>
-      <View>
+      <View style={styles.itemDetails}>
         <Text style={styles.name}>{item.title}</Text>
-      </View>
-      <View style={styles.details}>
-        <View>
+        <View style={styles.details}>
           <Text>Cantidad: {item.quantity}</Text>
-          <Text>Precio Unitario${item.price}</Text>
-          <Text>total por unidad ${subtotal}</Text>
+          <Text>Precio Unitario: ${item.price}</Text>
+          <Text>Total por unidad: ${subtotal}</Text>
         </View>
-        <Pressable>
-          <Feather name="trash" size={24} color={'red'} />
-        </Pressable>
       </View>
+      <Pressable style={styles.deleteButton}>
+        <Feather name="trash" size={24} color={'#FF0000'} />
+      </Pressable>
     </View>
-  )
-}
+  );
+};
 
-export default Cartitem
+export default CartItem;

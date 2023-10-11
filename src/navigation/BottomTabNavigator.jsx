@@ -1,14 +1,15 @@
-import { StyleSheet, View } from 'react-native'
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import CartNavigator from './CartNavigator'
-import Feather from '@expo/vector-icons/Feather'
-import OrdersNavigator from './OrdersNavigator'
-import ProfileNavigator from './ProfileNavigator'
-import StackNavigator from './StackNavigator'
-import { colors } from '../constants/colors'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import CartNavigator from './CartNavigator';
+import OrdersNavigator from './OrdersNavigator';
+import ProfileNavigator from './ProfileNavigator';
+import StackNavigator from './StackNavigator';
+import { colors } from '../constants/colors';
 
-const BottomTab = createBottomTabNavigator()
+const BottomTab = createBottomTabNavigator();
 
 function BottomTabNavigator() {
   return (
@@ -25,8 +26,13 @@ function BottomTabNavigator() {
         component={StackNavigator}
         options={{
           tabBarIcon: ({ focused }) => (
-            <View style={focused ? styles.iconContainer : null}>
-              <Feather name="shopping-bag" size={24} color={colors.white} />
+            <View style={[styles.iconContainer, focused && styles.iconContainerFocused]}>
+              <FontAwesome5
+                name="shopping-bag"
+                size={24}
+                color={focused ? colors.primary : '#999'}
+                style={focused && styles.iconFocused}
+              />
             </View>
           ),
         }}
@@ -36,8 +42,13 @@ function BottomTabNavigator() {
         component={CartNavigator}
         options={{
           tabBarIcon: ({ focused }) => (
-            <View style={focused ? styles.iconContainer : null}>
-              <Feather name="shopping-cart" size={24} color={colors.white} />
+            <View style={[styles.iconContainer, focused && styles.iconContainerFocused]}>
+              <FontAwesome5
+                name="shopping-cart"
+                size={24}
+                color={focused ? colors.primary : '#999'}
+                style={focused && styles.iconFocused}
+              />
             </View>
           ),
         }}
@@ -47,8 +58,13 @@ function BottomTabNavigator() {
         component={OrdersNavigator}
         options={{
           tabBarIcon: ({ focused }) => (
-            <View style={focused ? styles.iconContainer : null}>
-              <Feather name="list" size={24} color={colors.white} />
+            <View style={[styles.iconContainer, focused && styles.iconContainerFocused]}>
+              <FontAwesome5
+                name="list"
+                size={24}
+                color={focused ? colors.primary : '#999'}
+                style={focused && styles.iconFocused}
+              />
             </View>
           ),
         }}
@@ -58,30 +74,44 @@ function BottomTabNavigator() {
         component={ProfileNavigator}
         options={{
           tabBarIcon: ({ focused }) => (
-            <View style={focused ? styles.iconContainer : null}>
-              <Feather name="user" size={24} color={colors.white} />
+            <View style={[styles.iconContainer, focused && styles.iconContainerFocused]}>
+              <FontAwesome5
+                name="user"
+                size={24}
+                color={focused ? colors.primary : '#999'}
+                style={focused && styles.iconFocused}
+              />
             </View>
           ),
         }}
       />
     </BottomTab.Navigator>
-  )
+  );
 }
-
-export default BottomTabNavigator
 
 const styles = StyleSheet.create({
   tabBar: {
-    backgroundColor: colors.primary,
-    borderTopRightRadius: 25,
-    borderTopLeftRadius: 25,
-    paddingTop: 5,
+    backgroundColor: '#fff',
+    minHeight :110,
   },
   iconContainer: {
-    backgroundColor: colors.secondary,
+    backgroundColor: '#ddd',
     borderRadius: 20,
     padding: 8,
     justifyContent: 'center',
     alignItems: 'center',
+    marginBottom: 5,
   },
-})
+  iconContainerFocused: {
+   
+    backgroundColor: '#999', 
+    shadowColor: '#888', 
+    shadowOpacity: 0.9, 
+  },
+  iconFocused: {
+    shadowColor: '#000', 
+    shadowOpacity: 0.2, 
+  },
+});
+
+export default BottomTabNavigator;

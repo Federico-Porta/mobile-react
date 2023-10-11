@@ -15,7 +15,7 @@ const CategoryItem = ({ category, navigation }) => {
         dispatch(setCategorySelected(category));
         navigation.navigate('Products', { category });
       }}
-      style={styles.card}
+      style={styles.card} // Aplica el estilo de la tarjeta
     >
       <View style={styles.cardContent}>
         <Text style={styles.cardText}>{category}</Text>
