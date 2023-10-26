@@ -5,6 +5,7 @@ import { setUser } from '../../features/auth/authSlice';
 import styles from './Login.style';
 import { useDispatch } from 'react-redux';
 import { useLoginMutation } from '../../services/authApi';
+import { insertSession } from '../../db';
 
 const Login = ({ navigation }) => {
   const [email, setEmail] = useState('');
@@ -18,9 +19,14 @@ const Login = ({ navigation }) => {
       email,
       password,
     });
-    console.log(result);
+   
     if (result.isSuccess) {
-      dispatch(setUser(result));
+      dispatch(setUser(result.data));
+      insertSession({
+        localId: result.localId,
+        email: result.email,
+        token: result.idToken
+      }).then(result => console.log(result)).catch(error => console.log(error.message))
     }
   };
 

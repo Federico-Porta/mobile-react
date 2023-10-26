@@ -39,7 +39,6 @@ const Profile = ({navigation}) => {
 
   const confirmImage = async () =>{
    triggerSaveProfileImage({image, localId})
-   console.log(result)
   }
 
   return (

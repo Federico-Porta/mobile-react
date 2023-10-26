@@ -4,6 +4,10 @@ import { Provider } from 'react-redux'
 import fonts from './src/global/fonts'
 import store from './src/Store/index'
 import { useFonts } from 'expo-font'
+import { init} from './src/db'
+
+
+init().then(() => console.log('funciona')).catch(err =>console.log('rompio', err.message))
 
 export default function App() {
   const [fontsLoaded] = useFonts(fonts)
