@@ -48,6 +48,11 @@ const styles = StyleSheet.create({
     
     textAlign: 'center',
   },
+  background: {
+    flex: 1,
+    justifyContent: 'center',
+    marginTop:1
+  },
 });
 
 export default styles;

@@ -20,16 +20,15 @@ const MainNavigator = () => {
     }
   }, [data])
 
-
   useEffect(() => {
     ;(async () => {
       try {
-        const session = await fetchSession()
-        //console.log('Esta es la sesion', session)
+        const session = await fetchSession(localId)
+        console.log('Esta es la sesion', session.rows._array[0])
         if (session.rows.length) {
           console.log('entre')
           const user = session.rows._array[0]
-          console.log(user)
+          console.log(user , 'estoy dentro')
           dispatch(setUser(user))
         }
       } catch (error) {

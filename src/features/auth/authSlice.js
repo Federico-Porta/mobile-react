@@ -19,7 +19,8 @@ export const authSlice = createSlice({
       }
     },
     clearUser: () => {
-      return { user: null, token: null }
+      console.log("estoy saliendor")
+      return { user: null, token: null, localId:null }
     },
     setCameraImage: (state, action) => {
       return {

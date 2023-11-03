@@ -2,7 +2,6 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
 import CartNavigator from './CartNavigator';
 import OrdersNavigator from './OrdersNavigator';
 import ProfileNavigator from './ProfileNavigator';

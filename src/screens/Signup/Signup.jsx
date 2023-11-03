@@ -1,4 +1,4 @@
-import { Pressable, Text, TextInput, View } from 'react-native'
+import { Pressable, Text, TextInput, View, ImageBackground } from 'react-native'
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import styles from './Signup.styles'
@@ -24,10 +24,11 @@ const Signup = ({ navigation }) => {
   }
 
   return (
-    <View style={styles.container}>
-      <View>
-        <Text style={styles.title}>Registrate</Text>
-      </View>
+
+  <View style={styles.container}>
+    <View>
+      <Text style={styles.title}>Bienvenido</Text>
+    </View>
       <TextInput style={styles.input} placeholder="Email" value={email}
           onChangeText={setEmail} />
       <TextInput style={styles.input} placeholder="Password" secureTextEntry={true} value={password}
@@ -41,8 +42,9 @@ const Signup = ({ navigation }) => {
       <Pressable
             onPress={() => navigation.navigate('Login')}>
         <Text style={styles.buttonText}>Log In</Text>
-      </Pressable>
-    </View>
+        </Pressable>
+  </View>
+
   )
 }
 

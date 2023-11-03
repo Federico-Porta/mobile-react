@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F5F5F5', // Fondo en tono frío
+    backgroundColor: '#F5F5F5', 
     padding: 16,
   },
   listContainer: {
@@ -11,14 +11,14 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   cardContainer: {
-    backgroundColor: '#FFFFFF', // Fondo de las tarjetas
+    backgroundColor: '#FFFFFF', 
     borderRadius: 10,
     padding: 16,
     marginBottom: 12,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    elevation: 3, // Sombra para un aspecto más moderno (puede variar según la plataforma)
+    elevation: 3,
   },
   itemDetails: {
     flex: 1,
@@ -27,27 +27,27 @@ const styles = StyleSheet.create({
   itemName: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#333333', // Texto oscuro
+    color: '#333333', 
   },
   itemPrice: {
     fontSize: 16,
-    color: '#555555', // Texto más claro
+    color: '#555555', 
   },
   buttonContainer: {
-    backgroundColor: '#2196F3', // Color de fondo para el botón
+    backgroundColor: '#2196F3', 
     borderRadius: 8,
     padding: 12,
     alignItems: 'center',
   },
   buttonText: {
-    color: '#FFFFFF', // Color del texto del botón
+    color: '#FFFFFF',
     fontSize: 18,
     fontWeight: 'bold',
   },
   totalText: {
     marginTop: 8,
     fontSize: 16,
-    color: '#555555', // Color del texto del total
+    color: '#555555', 
   },
 });
 
