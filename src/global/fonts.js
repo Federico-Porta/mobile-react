@@ -3,4 +3,5 @@ export default {
   PoppinsThinItalic: require('../assets/fonts/Poppins-ThinItalic.ttf'),
   PoppinsLightItalic: require('../assets/fonts/Poppins-LightItalic.ttf'),
   PoppinsLight: require('../assets/fonts/Poppins-Light.ttf'),
+  atons: require('../assets/fontnike/Anton-Regular.ttf')
 }

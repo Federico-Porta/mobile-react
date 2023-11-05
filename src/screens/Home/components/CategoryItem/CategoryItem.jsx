@@ -1,7 +1,7 @@
 // components/CategoryItem.js
 
 import React from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { Pressable, Text, View, Image } from 'react-native';
 import { setCategorySelected } from '../../../../features/shop/shopSlice';
 import styles from './CategoryItem.style';
 import { useDispatch } from 'react-redux';
@@ -12,13 +12,19 @@ const CategoryItem = ({ category, navigation }) => {
   return (
     <Pressable
       onPress={() => {
-        dispatch(setCategorySelected(category));
+        dispatch(setCategorySelected(category.title));
         navigation.navigate('Products', { category });
       }}
-      style={styles.card} // Aplica el estilo de la tarjeta
+      style={styles.card}
     >
       <View style={styles.cardContent}>
-        <Text style={styles.cardText}>{category}</Text>
+        {category.image && (
+          <Image
+            source={{ uri: category.image }}
+            style={styles.categoryImage}
+          />
+        )}
+        <Text style={styles.cardText}>{category.title}</Text>
       </View>
     </Pressable>
   );

@@ -18,7 +18,7 @@ const Home = ({ navigation }) => {
             data={data}
             keyExtractor={category => category.title}
             renderItem={({ item }) => (
-              <CategoryItem category={item.title} navigation={navigation} />
+              <CategoryItem category={item} navigation={navigation} />
             )}
           />
         )}

@@ -90,27 +90,27 @@ function BottomTabNavigator() {
 
 const styles = StyleSheet.create({
   tabBar: {
-    backgroundColor: '#fff',
-    minHeight :110,
+    paddingTop: 10,
+    backgroundColor: '#5c5d63',
+    minHeight :60,
+    borderTopWidth: 4,
+    borderTopColor: '#4a4a4a',
   },
   iconContainer: {
-    backgroundColor: '#ddd',
-    borderRadius: 20,
-    padding: 8,
+    backgroundColor: '#5c5d63',
+    borderRadius: 80,
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 5,
   },
   iconContainerFocused: {
    
-    backgroundColor: '#999', 
-    shadowColor: '#888', 
-    shadowOpacity: 0.9, 
+    backgroundColor: '#adacac', 
+    minHeight: 40,
+    minWidth: 40,
+     
   },
-  iconFocused: {
-    shadowColor: '#000', 
-    shadowOpacity: 0.2, 
-  },
+  
 });
 
 export default BottomTabNavigator;

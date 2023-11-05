@@ -1,15 +1,5 @@
-import {
-  FlatList,
-  Image,
-  SafeAreaView,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native'
+import {FlatList, Image, SafeAreaView, Text, TouchableOpacity, View,} from 'react-native'
 import React, { useEffect, useState } from 'react'
-
-import { SearchInput } from '../../components'
-import allProducts from '../../data/products'
 import styles from './Products.style'
 import { useGetProductsByCategoryQuery } from '../../services/shopApi'
 import { useSelector } from 'react-redux'
@@ -17,11 +7,23 @@ import { useSelector } from 'react-redux'
 const Products = ({ navigation }) => {
   const category = useSelector(state => state.shop.categorySelected)
   const [keyword, setKeyword] = useState('')
+  const [products, setProducts] = useState([])
   const { data, isLoading } = useGetProductsByCategoryQuery(category)
 
+  useEffect(() => {
+    if (!isLoading) {
+      const dataArr = Object.values(data)
+      setProducts(dataArr)
+      const productsFiltered = dataArr.filter(product =>
+        product.title.includes(keyword)
+      )
+      setProducts(productsFiltered)
+    }
+  }, [isLoading, keyword])
+
+/*<SearchInput onSearch={setKeyword} />*/
   return (
     <SafeAreaView style={styles.container}>
-      <SearchInput onSearch={setKeyword} />
       <View style={styles.listContainer}>
         {!isLoading && (
           <FlatList

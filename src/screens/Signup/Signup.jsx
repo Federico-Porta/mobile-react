@@ -11,6 +11,8 @@ const Signup = ({ navigation }) => {
   const [confirmPass, setConfirmPass] = useState('')
   const [triggerSignup, result] = useSignUpMutation()
   const dispatch = useDispatch()
+
+  
   const onSubmit = () => {
     console.log(email, password, confirmPass)
     triggerSignup({

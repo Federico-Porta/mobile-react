@@ -7,6 +7,8 @@ import { clearUser } from '../../features/auth/authSlice';
 import { useDispatch } from 'react-redux';
 import { deletesession } from '../../db';
 
+
+
 const Header = ({ title }) => {
 
   const dispatch = useDispatch()
@@ -15,7 +17,7 @@ const Header = ({ title }) => {
     deletesession()
   }
   return (
-    <View style={{flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center'}}>
+    <View style={styles.header}>
       <Text style={styles.text}>{title} </Text>
       <AntDesign 
           name="logout"

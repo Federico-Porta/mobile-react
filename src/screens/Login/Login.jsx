@@ -33,14 +33,14 @@ const Login = ({ navigation }) => {
   };
 
   return (
-    <ImageBackground   source={require('../../../assets/nikeimages/fondo2.jpg')} resizeMode="cover" style={styles.image}>
+    <ImageBackground   source={require('../../../assets/nikeimages/source.gif')} resizeMode="cover" style={styles.image}>
     <KeyboardAvoidingView
       behavior='height'
       keyboardVerticalOffset={50}
       style={styles.screen}
     />
       <View style={styles.container}>
-      <Text style={styles.title}> Just Do It</Text>
+      <Text style={styles.title}></Text>
         <View>
           
         <TextInput
@@ -115,8 +115,8 @@ const styles = StyleSheet.create({
     marginBottom: 18,
   },
   container: {
-    backgroundColor:"#83828275",
-   borderRadius: 30,
+    backgroundColor:"#30303090",
+   borderRadius: 30, 
    paddingHorizontal: 15,
    shadowOpacity: 0.3,
    shadowRadius: 10,

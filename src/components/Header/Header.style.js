@@ -3,11 +3,21 @@ import { colors } from '../../constants/colors'
 
 export default styles = StyleSheet.create({
   text: {
-    height: 56,
-    paddingHorizontal: 24,
-    fontSize: 40,
-    fontFamily: 'PoppinsLight',
+    height: 80,
+    justifyContent: 'center',
+    fontSize: 60,
+    fontFamily: 'atons',
     alignSelf: 'center',
+    color: '#242424',
   },
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    borderBottomWidth: 4,
+    borderBottomColor: '#4a4a4a',
+    
+  }
+  
  
 })
