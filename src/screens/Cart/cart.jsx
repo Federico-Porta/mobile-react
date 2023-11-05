@@ -4,21 +4,26 @@ import React, { useMemo } from 'react';
 import styles from './Cart.styles';
 import { useSelector } from 'react-redux';
 import { usePostOrderMutation } from '../../services/shopApi';
+import { useDispatch } from 'react-redux';
+import { clearCart } from '../../features/cart/cartSlice';
 
-const Cart = () => {
+const Cart = ({navigation}) => {
   const cart = useSelector((state) => state.cart.items);
+  const localId = useSelector((state) => state.auth.localId); 
 
-  // Utiliza useMemo para calcular el total solo cuando cambia el carrito
   const total = useMemo(() => {
     return cart.reduce((acc, item) => acc + item.quantity * item.price, 0);
   }, [cart]);
 
   const [triggerPost, result] = usePostOrderMutation();
+  const dispatch = useDispatch();
 
   const renderItem = ({ item }) => <CartItem item={item} />;
 
   const confirmCart = () => {
-    triggerPost({ total, cart, user: "loggedUser" });
+    triggerPost({ total, cart, user: localId }).then(() => {
+      dispatch(clearCart());  // Navega a la pantalla de órdenes con un parámetro de actualización
+    });
   };
 
   return (
@@ -36,7 +41,7 @@ const Cart = () => {
       </View>
       <View style={styles.buttonContainer}>
         <Pressable onPress={confirmCart}>
-          <Text>Confirm</Text>
+          <Text style={styles.confirm}>Confirm</Text>
         </Pressable>
       </View>
     </View>

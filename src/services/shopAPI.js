@@ -16,6 +16,9 @@ export const shopApi = createApi({
       query: category =>
         `Products.json?orderBy="category"&equalTo="${category}"`,
     }),
+    getOrders: builder.query({
+      query: () => `orders.json`,
+    }),
     postOrder: builder.mutation({
       query: ({ ...order }) => ({
         url: 'orders.json',
@@ -40,6 +43,7 @@ export const {
   useGetCategoriesQuery,
   useGetProductsQuery,
   useGetProductsByCategoryQuery,
+  useGetOrdersQuery,
   usePostOrderMutation,
   useGetProfileImageQuery,
   usePostProfileImageMutation  

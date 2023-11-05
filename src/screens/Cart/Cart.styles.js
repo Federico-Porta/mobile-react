@@ -36,19 +36,24 @@ const styles = StyleSheet.create({
   buttonContainer: {
     backgroundColor: '#2196F3', 
     borderRadius: 8,
-    padding: 12,
+    
+    height: 48,
     alignItems: 'center',
   },
   buttonText: {
     color: '#FFFFFF',
+
     fontSize: 18,
     fontWeight: 'bold',
   },
   totalText: {
     marginTop: 8,
-    fontSize: 16,
+    fontSize: 30,
     color: '#555555', 
   },
+  confirm:{
+    fontSize: 20,
+  }
 });
 
 export default styles;
