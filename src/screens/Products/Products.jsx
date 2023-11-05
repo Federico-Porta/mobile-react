@@ -42,7 +42,7 @@ const Products = ({ navigation }) => {
                 <Image
                   style={styles.image}
                   source={{
-                    uri: item.images[0],
+                    uri: item.thumbnail,
                   }}
                 />
                 

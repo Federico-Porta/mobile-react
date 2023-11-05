@@ -5,18 +5,18 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#f4f4f4', // Fondo general
+    backgroundColor: '#f4f4f4', 
     padding: 16,
   },
   cardContainer: {
-    width: '80%', // Ajusta el ancho de la tarjeta según tus necesidades
+    width: '80%', 
   },
   imageContainer: {
     marginBottom: 16,
   },
   image: {
     width: '100%',
-    height: 200,
+    height: 400,
     borderRadius: 8,
   },
   title: {

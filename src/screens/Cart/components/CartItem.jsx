@@ -1,10 +1,19 @@
 import React from 'react';
 import { Image, Pressable, Text, View } from 'react-native';
 import Feather from '@expo/vector-icons/Feather';
+import { useDispatch } from 'react-redux';
+import {removeItem} from '../../../features/cart/cartSlice';
 import styles from './CartItem.styles';
 
 const CartItem = ({ item }) => {
+  const dispatch = useDispatch();
+
   const subtotal = item.quantity * item.price;
+
+  const handleRemoveFromCart = () => {
+  
+    dispatch(removeItem(item.id)); // Asegúrate de pasar el ID o identificador correcto para el producto
+  };
 
   return (
     <View style={styles.container}>
@@ -24,7 +33,7 @@ const CartItem = ({ item }) => {
           <Text>Total por unidad: ${subtotal}</Text>
         </View>
       </View>
-      <Pressable style={styles.deleteButton}>
+      <Pressable style={styles.deleteButton} onPress={handleRemoveFromCart}>
         <Feather name="trash" size={24} color={'#FF0000'} />
       </Pressable>
     </View>
