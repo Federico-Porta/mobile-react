@@ -6,7 +6,7 @@ import { useState } from 'react';
 
 const Orders = (navigation) => {
   const localId = useSelector((state) => state.auth.localId);
-  const { data: userOrders, isLoading } = useGetOrdersQuery(localId);
+  const { data: userOrders, isLoading, refetch } = useGetOrdersQuery(localId);
 
   const [refreshing, setRefreshing] = useState(false);
 
@@ -14,7 +14,7 @@ const Orders = (navigation) => {
     setRefreshing(true);
     refetch().then(() => setRefreshing(false));
   };
-  
+
   const userOrdersFiltered = userOrders
     ? Object.values(userOrders).filter((order) => order.user === localId)
     : [];
@@ -29,18 +29,21 @@ const Orders = (navigation) => {
           renderItem={({ item, index }) => (
             <View style={styles.orderContainer}>
               <Text style={styles.orderTitle}>{`Orden ${index + 1}`}</Text>
-              <Text style={styles.orderTotal}>{`Total: $${item.total}`}</Text>
-              <ScrollView>{console.log(item)}
+
+              <ScrollView>
                 {item.cart.map((product, productIndex) => (
                   <View style={styles.productCard} key={product.id}>
                     <Image source={{ uri: product.thumbnail }} style={styles.productThumbnail} />
-                    <Text style={styles.productItem}>{`Producto ${productIndex + 1}: ${product.title}`}</Text>
-                    <Text style={styles.productPrice}>
-                      {`Precio por unidad: $${product.price.toFixed(2)}`}
-                    </Text>
+                    <View style={styles.productInfoContainer}>
+                      <Text style={styles.productItem}>{`${product.title}`}</Text>
+                      <Text style={styles.productPrice}>
+                        {`Precio por unidad: $${product.price.toFixed(2)}`}
+                      </Text>
+                    </View>
                   </View>
                 ))}
               </ScrollView>
+              <Text style={styles.orderTotal}>{`Total: $${item.total}`}</Text>
             </View>
           )}
           keyExtractor={(item) => item.id}
@@ -53,10 +56,10 @@ const Orders = (navigation) => {
 };
 
 const styles = {
-  panta: { flex: 1,
+  panta: {
+    flex: 1,
     backgroundColor: '#f5f6fa',
-    paddingTop: 60 
-  
+    paddingTop: 60,
   },
   orderContainer: {
     backgroundColor: '#FFFFFF',
@@ -71,8 +74,9 @@ const styles = {
     marginBottom: 10,
   },
   orderTotal: {
-    fontSize: 16,
-    color: '#FF0000',
+    fontSize: 23,
+    color: '#018a11',
+    fontWeight: 'bold',
   },
   productListTitle: {
     fontSize: 18,
@@ -80,6 +84,8 @@ const styles = {
     marginTop: 16,
   },
   productCard: {
+    flexDirection: 'row', // Alinear elementos horizontalmente
+    alignItems: 'center', // Alinear elementos verticalmente al centro
     backgroundColor: '#FFFFFF',
     borderRadius: 10,
     padding: 16,
@@ -87,10 +93,14 @@ const styles = {
     elevation: 3,
   },
   productThumbnail: {
-    width: 80,
-    height: 80,
+    width: 100,
+    height: 100,
     borderRadius: 8,
     marginRight: 16,
+  },
+  productInfoContainer: {
+    flex: 1, // Para que ocupe el espacio disponible
+    flexDirection: 'column', // Alinear elementos verticalmente
   },
   productItem: {
     fontSize: 16,
