@@ -29,8 +29,7 @@ const LocationScreen = () => {
         longitude: location?.coords.longitude,
       });
 
-      // Utiliza Geocoder para obtener la dirección detallada
-      Geocoder.init('AIzaSyCztjZpkg8On0_xxKaNDDkUOv12KwJPBlM'); // Reemplaza con tu clave de API de geocodificación
+      Geocoder.init('---');
 
       Geocoder.from(location.coords.latitude, location.coords.longitude)
         .then((json) => {
