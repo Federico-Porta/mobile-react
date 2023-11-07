@@ -23,7 +23,6 @@ const Login = ({ navigation }) => {
    
     if (result.isSuccess) {
       dispatch(setUser(result.data));
-      console.log(result.data)
       insertSession({
         localId: result.data.localId,
         email: result.data.email,

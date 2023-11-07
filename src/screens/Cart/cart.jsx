@@ -21,10 +21,14 @@ const Cart = ({navigation}) => {
   const renderItem = ({ item }) => <CartItem item={item} />;
 
   const confirmCart = () => {
-    triggerPost({ total, cart, user: localId }).then(() => {
-      dispatch(clearCart());  // Navega a la pantalla de órdenes con un parámetro de actualización
-    });
+    triggerPost({ total, cart, user: localId })
+      .unwrap()
+      .then(() => {
+        dispatch(clearCart());
+        navigation.navigate('Orders', { forceRefresh: new Date().getTime() });
+      });
   };
+  
 
   return (
     <View style={styles.container}>

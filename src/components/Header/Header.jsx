@@ -5,7 +5,7 @@ import styles from './Header.style'
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import { clearUser } from '../../features/auth/authSlice';
 import { useDispatch } from 'react-redux';
-import { deletesession } from '../../db';
+import { deletesession, fetchSession } from '../../db';
 
 
 
@@ -15,6 +15,7 @@ const Header = ({ title }) => {
   const logout = () =>{
     dispatch(clearUser())
     deletesession()
+    console.log(fetchSession())
   }
   return (
     <View style={styles.header}>

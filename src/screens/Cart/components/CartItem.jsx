@@ -11,8 +11,7 @@ const CartItem = ({ item }) => {
   const subtotal = item.quantity * item.price;
 
   const handleRemoveFromCart = () => {
-  
-    dispatch(removeItem(item.id)); // Asegúrate de pasar el ID o identificador correcto para el producto
+    dispatch(removeItem(item.id));
   };
 
   return (

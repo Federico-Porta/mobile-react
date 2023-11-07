@@ -4,26 +4,38 @@ import { useDispatch } from 'react-redux'
 import styles from './Signup.styles'
 import { setUser } from '../../features/auth/authSlice'; 
 import { useSignUpMutation } from '../../services/authApi';
+import { insertSession } from '../../db';
 
 const Signup = ({ navigation }) => {
    const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPass, setConfirmPass] = useState('')
+  const [age, setage] = useState('')
+  const [direction, setDirection] = useState('')
   const [triggerSignup, result] = useSignUpMutation()
   const dispatch = useDispatch()
 
+
   
   const onSubmit = () => {
-    console.log(email, password, confirmPass)
+    console.log(email, password, confirmPass,)
     triggerSignup({
       email,
       password,
+
     })
     console.log(result)
     if (result.isSuccess) {
-      dispatch(setUser(result.data))
+      dispatch(setUser(result.data));
+      insertSession({
+        localId: result.data.localId,
+        email: result.data.email,
+        token: result.data.idToken,
+      
+
+      }).then(result => console.log(result)).catch(error => console.log(error.message))
     }
-  }
+  };
 
   return (
 
@@ -33,6 +45,10 @@ const Signup = ({ navigation }) => {
     </View>
       <TextInput style={styles.input} placeholder="Email" value={email}
           onChangeText={setEmail} />
+        <TextInput style={styles.input} placeholder="Age" value={age}
+          onChangeText={setage} />
+      <TextInput style={styles.input} placeholder="Direction"  value={direction}
+          onChangeText={setDirection} />
       <TextInput style={styles.input} placeholder="Password" secureTextEntry={true} value={password}
           onChangeText={setPassword} />
       <TextInput style={styles.input} placeholder="Confirm Password" secureTextEntry={true} value={confirmPass}
